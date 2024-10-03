@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Site Name</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="referrer" content="no-referrer" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="style.css">
+    <!-- enable as needed
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script> -->
+    <script type='text/javascript' src='main.js'></script>
+</head>
+
+<body>
+    <div id="content">
+        <article id="vFlow" class="scroller">
+            <section id="welcome">
+                <div id="menus">
+                    <span class="menu" data-name="Menu 1">Menu 1</span>
+                    <span class="menu" data-name="Menu 2">Menu 2</span>
+                </div>
+                <h1 id="mainH1">Welcome!</h1>
+            </section>
+            <section id="hFlow">
+                <span class="swipe">Static Slide (Click Menu for dynamic slides)</span>
+            </section>
+            <section id="configs">
+                <h1>3rd Page</h1>
+            </section>
+        </article>
+        <aside>
+            <button id="refresh" onclick="window.location.reload();">&#x21bb;</button>
+        </aside>
+    </div>
+
+    <script alt="things that can only run after page load">
+        [...vFlow.children].forEach(element => vObserver.observe(element));
+        menus.querySelectorAll('.menu').forEach(e => e.addEventListener('click', menuClicked));
+        content.addEventListener('dblclick', toggleFullscreen);
+    </script>
+
+    <script alt="serviceWorker">
+        if ('serviceWorker' in navigator && location.host.length) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('serviceworker.js').then(function (registration) {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, function (err) {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>

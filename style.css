@@ -1,0 +1,98 @@
+html {
+    background-color: #090909;
+}
+
+body {
+    margin: 0;
+    color: white;
+}
+
+.scroller {
+    height: 100vh;
+    min-height: 100vh;
+    width: 100%;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+
+.scroller section {
+    scroll-snap-align: start;
+    min-height: 100vh;
+    height: 100vh;
+}
+
+.scroller section:nth-child(odd),
+#hFlow .swipe:nth-child(even) {
+    background: linear-gradient(45deg, #121304, #020f04);
+}
+
+.scroller section:nth-child(even) {
+    background: linear-gradient(-45deg, #183f1e, #153045);
+}
+
+#hFlow {
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+#hFlow .swipe {
+    scroll-snap-align: center;
+    min-width: 94vw;
+    width: 94vw;
+    text-align: center;
+    font-size: 3em;
+    line-height: 100vh;
+    user-select: none;
+}
+
+/* page content */
+h1 {
+    font-size: 12vh;
+    padding-top: 20vh;
+    color: #126d62;
+    text-align: center;
+}
+
+#menus {
+    height: 50px;
+    width: 200px;
+    padding: 30px 0 0 30px;
+}
+
+.menu {
+    display: table-cell;
+    vertical-align: middle;
+    height: 50px;
+    padding: 8px;
+    border: 1px solid #ffffff;
+    border-radius: 25px;
+    opacity: .4;
+    text-align: center;
+    font-size: x-large;
+    color: #e2faea;
+    cursor: pointer;
+}
+
+button {
+    position: absolute;
+    font-size: 2em;
+    text-align: center;
+    padding: 0;
+    width: 50px;
+    height: 50px;
+    border: 0px;
+    border-radius: 25px;
+    opacity: .3;
+    cursor: pointer;
+}
+
+button.active {
+    border: #090909 4px solid;
+}
+
+#refresh {
+    top: 50px;
+    right: 10px;
+}
